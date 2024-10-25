@@ -35,11 +35,11 @@ public class SecurityConfig {
                 .authorizeRequests(auth -> auth.anyRequest().authenticated())
                  .formLogin(Customizer.withDefaults())
                 .rememberMe(rememberMe -> rememberMe
-                        .alwaysRemember(true)
-                        .tokenValiditySeconds(3600)
+                        .alwaysRemember(true) // 그냥 계속 기억하기
+                        .tokenValiditySeconds(3600) // 토큰 유효시간
                         .userDetailsService(inMemoryUserDetailsManager())
-                        .rememberMeParameter("remember-me")
-                        .rememberMeCookieName("remember-me")
+                        .rememberMeParameter("remember-me") // remember-me는 기본값
+                        .rememberMeCookieName("remember-me") // remember-me는 기본값
                         .key("security")
                 );
         return http.build();
